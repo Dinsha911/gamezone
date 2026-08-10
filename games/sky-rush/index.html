@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sky Rush — GameZone</title><link rel="stylesheet" href="../../css/style.css"></head><body><main class="container"><section class="hero"><div class="hero-copy"><span class="eyebrow">GAMEZONE ARCADE</span><h1>SKY<br>RUSH</h1><p>This is the first game slot. The polished Sky Rush game engine will be built here next.</p><div class="actions"><a class="btn primary" href="../../">← BACK TO GAMEZONE</a></div></div><div class="hero-plane">✈</div></section></main></body></html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Sky Rush — GameZone</title><meta name="description" content="Play Sky Rush on GameZone. Dodge obstacles, collect coins and chase your high score.">
+<link rel="stylesheet" href="../../css/style.css"><link rel="stylesheet" href="game.css"></head>
+<body class="game-page">
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../../"><span class="brand-mark">G</span><span>GAMEZONE</span></a><a class="back-link" href="../../">← Back to games</a>
+</div></header>
+<main class="game-shell container">
+<section class="game-header"><div><span class="eyebrow">GAMEZONE ARCADE</span><h1>✈️ SKY RUSH</h1><p>Fly. Dodge. Collect. Survive.</p></div>
+<div class="game-best"><span>BEST</span><strong id="bestScore">0</strong></div></section>
+<div class="game-frame"><canvas id="gameCanvas" aria-label="Sky Rush game"></canvas>
+<div class="hud"><div class="hud-box"><span>SCORE</span><strong id="score">0</strong></div><div class="hud-box"><span>COINS</span><strong id="coins">0</strong></div><div class="hud-box"><span>SHIELD</span><strong id="shield">—</strong></div><button id="pauseBtn" class="hud-btn" type="button">Ⅱ</button></div>
+<div id="startScreen" class="overlay"><div class="overlay-card"><div class="big-icon">✈️</div><span class="eyebrow">ENDLESS FLIGHT</span><h2>SKY RUSH</h2><p>Stay airborne, dodge storm gates and collect coins. The longer you survive, the faster it gets.</p><button id="startBtn" class="game-btn primary-game">START FLIGHT</button><div class="controls"><span>Desktop: <b>WASD</b> / <b>Arrow Keys</b></span><span>Mobile: <b>Touch & drag</b></span></div></div></div>
+<div id="pauseScreen" class="overlay hidden"><div class="overlay-card small-card"><div class="big-icon">Ⅱ</div><h2>PAUSED</h2><button id="resumeBtn" class="game-btn primary-game">RESUME</button></div></div>
+<div id="gameOverScreen" class="overlay hidden"><div class="overlay-card"><div class="big-icon">💥</div><span class="eyebrow">FLIGHT COMPLETE</span><h2>GAME OVER</h2>
+<div class="result-grid"><div><span>SCORE</span><strong id="finalScore">0</strong></div><div><span>COINS</span><strong id="finalCoins">0</strong></div><div><span>DISTANCE</span><strong id="finalDistance">0m</strong></div><div><span>BEST</span><strong id="finalBest">0</strong></div></div>
+<p id="newBest" class="new-best hidden">🏆 NEW HIGH SCORE!</p><button id="restartBtn" class="game-btn primary-game">FLY AGAIN</button><a class="game-btn secondary-game" href="../../">BACK TO GAMEZONE</a></div></div>
+</div>
+<div class="mobile-hint">Touch and hold to fly upward. Release to descend.</div>
+<div class="game-ad-slot"><span>Advertisement</span><!-- Adsterra later --></div>
+<section class="how-to"><h2>How to play</h2><div class="how-grid"><div><b>1</b><span>Keep your aircraft airborne.</span></div><div><b>2</b><span>Pass storm gates without hitting them.</span></div><div><b>3</b><span>Collect coins and shields.</span></div><div><b>4</b><span>Survive longer to raise your score.</span></div></div></section>
+</main><script src="game.js"></script></body></html>
