@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Helicopter Rescue — GameZone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="brand" href="../../">GAMEZONE</a>
+    <a class="back" href="../../">← MORE GAMES</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <div class="eyebrow">ARCADE • RESCUE</div>
+        <h1>HELICOPTER<br><span>RESCUE</span></h1>
+        <p>Fly low, rescue survivors, dodge hazards and make it home before your fuel runs out.</p>
+      </div>
+      <div class="tips">
+        <b>DESKTOP</b><br>WASD / Arrow Keys to fly<br><br>
+        <b>MOBILE</b><br>Drag anywhere on the game
+      </div>
+    </section>
+
+    <section class="game-shell">
+      <div class="hud">
+        <div><small>RESCUED</small><strong id="rescued">0/10</strong></div>
+        <div><small>SCORE</small><strong id="score">0</strong></div>
+        <div><small>FUEL</small><strong id="fuel">100%</strong></div>
+        <div><small>LIVES</small><strong id="lives">3</strong></div>
+      </div>
+
+      <div id="gameWrap">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="startOverlay" class="overlay">
+          <div class="panel">
+            <div class="heli">🚁</div>
+            <div class="eyebrow">GAMEZONE ORIGINAL</div>
+            <h2>HELICOPTER RESCUE</h2>
+            <p>Rescue 10 survivors. Avoid towers and keep enough fuel to return safely.</p>
+            <button id="startBtn">START RESCUE</button>
+          </div>
+        </div>
+
+        <div id="pauseOverlay" class="overlay hidden">
+          <div class="panel compact">
+            <div class="eyebrow">FLIGHT PAUSED</div>
+            <h2>PAUSED</h2>
+            <button id="resumeBtn">RESUME</button>
+          </div>
+        </div>
+
+        <div id="gameOverOverlay" class="overlay hidden">
+          <div class="panel">
+            <div class="eyebrow">MISSION COMPLETE</div>
+            <h2 id="overTitle">MISSION FAILED</h2>
+            <p id="overText"></p>
+            <div class="result"><span>SCORE</span><b id="finalScore">0</b></div>
+            <button id="restartBtn">FLY AGAIN</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-controls">
+        <button id="upBtn" aria-label="Fly up">▲</button>
+        <button id="pauseBtn" aria-label="Pause">Ⅱ</button>
+        <button id="downBtn" aria-label="Fly down">▼</button>
+      </div>
+    </section>
+
+    <section class="how">
+      <article><b>1</b><h3>FIND</h3><p>Look for survivors waiting near the ground.</p></article>
+      <article><b>2</b><h3>RESCUE</h3><p>Fly close to a survivor to pick them up.</p></article>
+      <article><b>3</b><h3>SURVIVE</h3><p>Dodge buildings and conserve your fuel.</p></article>
+    </section>
+  </main>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
