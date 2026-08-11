@@ -1,0 +1,43 @@
+*{box-sizing:border-box}
+:root{--bg:#07101b;--panel:#0d1a29;--line:rgba(75,220,255,.16);--cyan:#38e8ff;--yellow:#ffd54a;--text:#eaf7ff;--muted:#8ba4b7}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at 20% 10%,#102b42 0,transparent 38%),var(--bg);color:var(--text);font-family:"Exo 2",sans-serif}
+body{overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.page{width:min(1180px,100%);margin:auto;padding:18px 18px 50px}
+header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 28px}
+.brand{font:900 1.15rem Orbitron;letter-spacing:2px;color:var(--cyan)}
+.back{font:700 .75rem Orbitron;letter-spacing:1px;color:var(--muted)}
+.intro{display:flex;justify-content:space-between;gap:30px;align-items:end;padding:18px 0 24px}
+.eyebrow{font:700 .68rem Orbitron;letter-spacing:2px;color:var(--cyan)}
+h1{font:900 clamp(2.4rem,6vw,5.2rem)/.88 Orbitron;margin:12px 0 18px;letter-spacing:-2px}
+h1 span{color:var(--yellow)}
+.intro p{max-width:650px;color:var(--muted);font-size:1.05rem;line-height:1.55;margin:0}
+.tips{min-width:210px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(13,26,41,.72);font-size:.78rem;line-height:1.35;color:var(--muted)}
+.tips b{color:var(--cyan);font:700 .65rem Orbitron}
+.game-shell{border:1px solid var(--line);border-radius:20px;background:rgba(5,13,23,.78);padding:12px;box-shadow:0 20px 70px rgba(0,0,0,.28)}
+.hud{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.hud div{background:#0b1826;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.hud small{display:block;color:var(--muted);font:700 .58rem Orbitron;letter-spacing:1px}
+.hud strong{display:block;margin-top:3px;font:700 1rem Orbitron}
+#gameWrap{position:relative;overflow:hidden;border-radius:14px;background:#071521}
+canvas{display:block;width:100%;height:auto;touch-action:none}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:rgba(3,10,17,.72);backdrop-filter:blur(5px)}
+.hidden{display:none!important}
+.panel{width:min(460px,100%);padding:30px 24px;text-align:center;border:1px solid var(--line);border-radius:18px;background:rgba(10,24,38,.96);box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.panel.compact{width:min(330px,100%)}
+.heli{font-size:4rem;margin-bottom:10px}
+h2{font:900 clamp(1.5rem,5vw,2.4rem) Orbitron;margin:12px 0}
+.panel p{color:var(--muted);line-height:1.5;margin:0 auto 22px;max-width:380px}
+button{border:0;border-radius:999px;background:linear-gradient(100deg,var(--cyan),#a8f8ff);color:#041018;padding:14px 25px;font:900 .78rem Orbitron;letter-spacing:1px;cursor:pointer;box-shadow:0 0 24px rgba(56,232,255,.2)}
+button:active{transform:scale(.97)}
+.result{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+.result span{font:700 .65rem Orbitron;color:var(--muted)} .result b{font:900 1.2rem Orbitron;color:var(--yellow)}
+.mobile-controls{display:flex;justify-content:center;gap:14px;padding:12px 0 2px}
+.mobile-controls button{width:58px;height:44px;padding:0;background:#10283a;color:var(--cyan);border:1px solid var(--line);box-shadow:none}
+#pauseBtn{font-size:1rem}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.how article{padding:18px;border:1px solid var(--line);border-radius:14px;background:rgba(13,26,41,.55)}
+.how b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#06111a;font:900 .75rem Orbitron}
+.how h3{font:700 .8rem Orbitron;margin:13px 0 7px}.how p{margin:0;color:var(--muted);line-height:1.45;font-size:.9rem}
+@media(max-width:700px){.page{padding:12px 10px 30px}.intro{display:block}.tips{margin-top:18px}.hud strong{font-size:.82rem}.hud div{padding:8px}.how{grid-template-columns:1fr}.panel{padding:25px 18px}.mobile-controls{padding-bottom:max(4px,env(safe-area-inset-bottom))}}
+@media(max-width:430px){header{padding-bottom:18px}.intro p{font-size:.92rem}h1{font-size:2.5rem}.tips{display:none}.hud{gap:5px}.hud small{font-size:.5rem}.hud strong{font-size:.72rem}.mobile-controls button{width:54px;height:42px}}
