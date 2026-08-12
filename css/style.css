@@ -17,3 +17,20 @@ nav{display:flex;gap:24px;color:var(--muted);font-size:.9rem}nav a:hover,nav .ac
 footer{margin-top:55px;padding:35px 0 50px;border-top:1px solid var(--line);color:var(--muted)}.footer-wrap{display:flex;justify-content:space-between;gap:20px}.footer-wrap strong{color:var(--text);letter-spacing:.08em}.footer-links{display:flex;gap:18px}.footer-links a:hover{color:var(--text)}
 @media(max-width:900px){.game-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.container{width:calc(100% - 20px)}.site-header{height:62px}.nav-wrap{gap:12px}nav{display:none}.search{width:auto}.search input{display:none}.hero{margin-top:14px;min-height:500px}.hero-copy{padding:38px 24px}.hero-plane{right:7%;top:52%;font-size:7rem}.hero h1{font-size:3.3rem}.game-grid{grid-template-columns:repeat(2,1fr);gap:10px}.game-art{font-size:3rem}.challenge{display:block}.challenge-score{text-align:left;margin-top:18px}.footer-wrap{display:block}.footer-links{margin-top:18px}}
+.game-art {
+    position: relative;
+}
+
+.game-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 8px;
+    border-radius: 20px;
+    background: #38e8ff;
+    color: #06111a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
