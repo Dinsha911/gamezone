@@ -70,18 +70,24 @@ function card(g) {
   `;
 }
 
-
 function render(list) {
 
+  // Browse Games
   grid.innerHTML = list
     .map(card)
     .join("");
 
-  trend.innerHTML = list
-    .slice(0, 4)
+  // Trending Now
+  const trendingGames = [
+    GAMES.find(g => g.name === "Helicopter Rescue"),
+    GAMES.find(g => g.name === "Sky Rush"),
+    GAMES.find(g => g.name === "Traffic Rush"),
+    GAMES.find(g => g.name === "Space Escape")
+  ].filter(Boolean);
+
+  trend.innerHTML = trendingGames
     .map(card)
     .join("");
-
 }
 
 
