@@ -8,20 +8,326 @@
 <meta name="theme-color" content="#080b12">
 <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<header class="site-header"><div class="container nav-wrap">
-<a class="brand" href="./"><span class="brand-mark">G</span><span>GAMEZONE</span></a>
-<nav><a class="active" href="#games">Games</a><a href="#popular">Popular</a><a href="#daily">Daily Challenge</a></nav>
-<label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search games..." aria-label="Search games"></label>
-</div></header>
+
+<header class="site-header">
+<div class="container nav-wrap">
+
+<a class="brand" href="./">
+<span class="brand-mark">G</span>
+<span>GAMEZONE</span>
+</a>
+
+<nav>
+<a class="active" href="#games">Games</a>
+<a href="#popular">Popular</a>
+<a href="#daily">Daily Challenge</a>
+</nav>
+
+<label class="search">
+<span>⌕</span>
+<input id="search" type="search" placeholder="Search games..." aria-label="Search games">
+</label>
+
+</div>
+</header>
+
+
 <main class="container">
-<section class="hero"><div class="hero-copy"><span class="eyebrow">FEATURED GAME</span><h1>SKY<br>RUSH</h1><p>Fly through dangerous skies, dodge obstacles and chase your highest score.</p><div class="actions"><a class="btn primary" href="games/sky-rush/">▶ PLAY NOW</a><a class="btn secondary" href="#games">Browse Games</a></div></div><div class="hero-plane" aria-hidden="true">✈</div></section>
-<section id="popular" class="section"><div class="section-head"><div><h2>🔥 Trending Now</h2><p>Quick games worth playing right now.</p></div><a href="#games">View all →</a></div><div class="game-grid" id="trending"></div></section>
-<section id="daily" class="challenge"><div><span class="eyebrow">DAILY CHALLENGE</span><h2>🏆 Beat today's Sky Rush score</h2><p>Play today and try to beat the target score.</p><a class="btn primary" href="games/sky-rush/">PLAY CHALLENGE</a></div><div class="challenge-score">TARGET<br><strong>5,000</strong></div></section>
-<section id="games" class="section"><div class="section-head"><div><h2>🎮 Browse Games</h2><p>More games will be added as GameZone grows.</p></div></div>
-<div class="tags"><button class="tag active" data-filter="all">All</button><button class="tag" data-filter="arcade">Arcade</button><button class="tag" data-filter="racing">Racing</button><button class="tag" data-filter="action">Action</button><button class="tag" data-filter="puzzle">Puzzle</button></div>
-<div class="game-grid" id="gamesGrid"></div></section>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="hero-copy">
+
+<span class="eyebrow">FEATURED GAME</span>
+
+<h1>SKY<br>RUSH</h1>
+
+<p>
+Fly through dangerous skies, dodge obstacles and chase your highest score.
+</p>
+
+<div class="actions">
+
+<a class="btn primary" href="games/sky-rush/">
+▶ PLAY NOW
+</a>
+
+<a class="btn secondary" href="#games">
+Browse Games
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-plane" aria-hidden="true">
+✈
+</div>
+
+</section>
+
+
+<!-- TRENDING -->
+<section id="popular" class="section">
+
+<div class="section-head">
+
+<div>
+<h2>🔥 Trending Now</h2>
+<p>Quick games worth playing right now.</p>
+</div>
+
+<a href="#games">View all →</a>
+
+</div>
+
+
+<!-- NEW GAME FEATURE -->
+<div class="game-grid" style="margin-bottom:24px;">
+
+<article class="game-card">
+
+<a href="games/helicopter-rescue/">
+
+<div
+class="game-thumb"
+style="
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:170px;
+background:
+radial-gradient(circle at 70% 30%,rgba(56,232,255,.25),transparent 35%),
+linear-gradient(145deg,#102d42,#071521);
+font-size:4.8rem;
+position:relative;
+overflow:hidden;
+">
+
+🚁
+
+<span style="
+position:absolute;
+top:12px;
+left:12px;
+font-size:.62rem;
+font-weight:800;
+letter-spacing:1px;
+font-family:Orbitron,Arial,sans-serif;
+color:#38e8ff;
+background:rgba(0,0,0,.35);
+padding:6px 9px;
+border-radius:20px;
+">
+NEW
+</span>
+
+</div>
+
+<div class="game-card-body">
+
+<div>
+
+<h3>Helicopter Rescue</h3>
+
+<p>
+Rescue survivors, dodge buildings and manage your fuel.
+</p>
+
+</div>
+
+<span class="btn primary">
+PLAY
+</span>
+
+</div>
+
+</a>
+
+</article>
+
+</div>
+
+
+<!-- EXISTING TRENDING GAMES -->
+<div class="game-grid" id="trending"></div>
+
+</section>
+
+
+<!-- DAILY CHALLENGE -->
+<section id="daily" class="challenge">
+
+<div>
+
+<span class="eyebrow">
+DAILY CHALLENGE
+</span>
+
+<h2>
+🏆 Beat today's Sky Rush score
+</h2>
+
+<p>
+Play today and try to beat the target score.
+</p>
+
+<a class="btn primary" href="games/sky-rush/">
+PLAY CHALLENGE
+</a>
+
+</div>
+
+<div class="challenge-score">
+TARGET
+<br>
+<strong>5,000</strong>
+</div>
+
+</section>
+
+
+<!-- ALL GAMES -->
+<section id="games" class="section">
+
+<div class="section-head">
+
+<div>
+
+<h2>🎮 Browse Games</h2>
+
+<p>
+More games will be added as GameZone grows.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="tags">
+
+<button class="tag active" data-filter="all">
+All
+</button>
+
+<button class="tag" data-filter="arcade">
+Arcade
+</button>
+
+<button class="tag" data-filter="racing">
+Racing
+</button>
+
+<button class="tag" data-filter="action">
+Action
+</button>
+
+<button class="tag" data-filter="puzzle">
+Puzzle
+</button>
+
+</div>
+
+
+<!-- HELICOPTER RESCUE QUICK LINK -->
+
+<div
+style="
+margin:0 0 22px;
+padding:16px 18px;
+border:1px solid rgba(56,232,255,.16);
+border-radius:14px;
+background:linear-gradient(135deg,rgba(56,232,255,.07),rgba(255,213,74,.04));
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:16px;
+flex-wrap:wrap;
+">
+
+<div>
+
+<div style="
+font-size:.62rem;
+font-weight:800;
+letter-spacing:1.5px;
+color:#38e8ff;
+margin-bottom:5px;
+">
+NEW GAME
+</div>
+
+<h3 style="margin:0 0 4px;">
+🚁 Helicopter Rescue
+</h3>
+
+<p style="
+margin:0;
+opacity:.7;
+font-size:.88rem;
+">
+Rescue survivors. Dodge obstacles. Beat the mission.
+</p>
+
+</div>
+
+<a
+class="btn primary"
+href="games/helicopter-rescue/"
+>
+PLAY NOW
+</a>
+
+</div>
+
+
+<div class="game-grid" id="gamesGrid"></div>
+
+</section>
+
 </main>
-<footer><div class="container footer-wrap"><div><strong>GAMEZONE</strong><p>Free browser games. Play. Compete. Repeat.</p></div><div class="footer-links"><a href="pages/about.html">About</a><a href="pages/privacy.html">Privacy</a><a href="pages/contact.html">Contact</a></div></div></footer>
+
+
+<footer>
+
+<div class="container footer-wrap">
+
+<div>
+
+<strong>GAMEZONE</strong>
+
+<p>
+Free browser games. Play. Compete. Repeat.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<a href="pages/about.html">
+About
+</a>
+
+<a href="pages/privacy.html">
+Privacy
+</a>
+
+<a href="pages/contact.html">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
 <script src="js/main.js"></script>
-</body></html>
+
+</body>
+</html>
