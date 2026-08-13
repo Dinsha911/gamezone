@@ -42,39 +42,229 @@ button:active{transform:scale(.97)}
 @media(max-width:700px){.page{padding:12px 10px 30px}.intro{display:block}.tips{margin-top:18px}.hud strong{font-size:.82rem}.hud div{padding:8px}.how{grid-template-columns:1fr}.panel{padding:25px 18px}.mobile-controls{padding-bottom:max(4px,env(safe-area-inset-bottom))}}
 @media(max-width:430px){header{padding-bottom:18px}.intro p{font-size:.92rem}h1{font-size:2.5rem}.tips{display:none}.hud{gap:5px}.hud small{font-size:.5rem}.hud strong{font-size:.72rem}.mobile-controls button{width:54px;height:42px}}
 
-/* MOBILE LANDSCAPE START-SCREEN FIX */
-@media (max-height:560px) and (orientation:landscape){
-  .page{padding:8px 10px 18px}
-  header{padding:4px 0 8px}
-  .intro{display:none}
-  .game-shell{padding:7px;border-radius:14px}
-  .hud{margin-bottom:6px}
-  .hud div{padding:5px 8px}
-  .hud small{font-size:.46rem}
-  .hud strong{font-size:.68rem;margin-top:1px}
-  #gameWrap{border-radius:10px}
-  .overlay{padding:8px;overflow-y:auto;align-items:center}
-  .panel{width:min(520px,94vw);padding:13px 18px;border-radius:13px}
-  .panel .heli{font-size:2rem;margin-bottom:2px}
-  .panel .eyebrow{font-size:.52rem;letter-spacing:1.5px}
-  .panel h2{font-size:1.25rem;margin:5px 0}
-  .panel p{font-size:.72rem;line-height:1.25;margin:0 auto 9px}
-  .panel button{padding:9px 20px;font-size:.62rem}
-  .mobile-controls{padding:5px 0 0;gap:9px}
-  .mobile-controls button{width:46px;height:34px}
-  .how{display:none}
+/* =========================================
+   HELICOPTER RESCUE
+   MOBILE LANDSCAPE FIX
+   ========================================= */
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    .page {
+        width: 100%;
+        padding: 4px 8px 8px;
+    }
+
+    header {
+        padding: 2px 0 5px;
+    }
+
+    /* Hide the introduction to save vertical space */
+    .intro {
+        display: none;
+    }
+
+    .game-shell {
+        padding: 5px;
+    }
+
+    .hud {
+        margin-bottom: 5px;
+    }
+
+    .hud div {
+        padding: 4px 6px;
+    }
+
+    .hud small {
+        font-size: 8px;
+    }
+
+    .hud strong {
+        font-size: 11px;
+    }
+
+    /*
+       IMPORTANT:
+       Give the actual game area a controlled height.
+    */
+
+    #gameWrap {
+        position: relative;
+        width: 100%;
+        height: min(65vh, 360px);
+        min-height: 230px;
+        overflow: hidden;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    /*
+       The start screen now fills exactly
+       the visible game area.
+    */
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+    /*
+       Smaller start panel for landscape phones.
+    */
+
+    .panel {
+        width: min(430px, 90%);
+        max-height: 90%;
+        padding: 12px 18px;
+    }
+
+    .panel .heli {
+        font-size: 2rem;
+        margin-bottom: 2px;
+    }
+
+    .panel .eyebrow {
+        font-size: 8px;
+    }
+
+    .panel h2 {
+        font-size: 18px;
+        margin: 4px 0 6px;
+    }
+
+    .panel p {
+        font-size: 11px;
+        line-height: 1.25;
+        margin-bottom: 9px;
+    }
+
+    /*
+       Make sure the button has enough
+       size for a finger tap.
+    */
+
+    .panel button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-height: 38px;
+        padding: 8px 20px;
+
+        font-size: 10px;
+    }
+
+    .mobile-controls {
+        padding: 4px 0 0;
+        gap: 8px;
+    }
+
+    .mobile-controls button {
+        width: 44px;
+        height: 32px;
+    }
+
+    .how {
+        display: none;
+    }
 }
-@media (max-height:420px) and (orientation:landscape){
-  .page{padding:4px 8px 8px}
-  header{padding:2px 0 5px}
-  .game-shell{padding:5px}
-  .hud div{padding:4px 6px}
-  .hud small{font-size:.4rem}
-  .hud strong{font-size:.62rem}
-  .panel{padding:8px 14px}
-  .panel .heli{display:none}
-  .panel h2{font-size:1.05rem;margin:3px 0}
-  .panel p{font-size:.62rem;margin-bottom:6px}
-  .panel button{padding:7px 17px}
-  .mobile-controls{padding-top:3px}
+
+
+/* =========================================
+   VERY SHORT LANDSCAPE PHONES
+   ========================================= */
+
+@media screen and (orientation: landscape) and (max-height: 420px) {
+
+    .page {
+        padding: 2px 6px 5px;
+    }
+
+    header {
+        padding: 1px 0 3px;
+    }
+
+    .game-shell {
+        padding: 4px;
+    }
+
+    #gameWrap {
+        height: 62vh;
+        min-height: 190px;
+    }
+
+    .hud {
+        margin-bottom: 3px;
+    }
+
+    .hud div {
+        padding: 3px 5px;
+    }
+
+    .hud small {
+        font-size: 7px;
+    }
+
+    .hud strong {
+        font-size: 10px;
+    }
+
+    .overlay {
+        padding: 4px;
+    }
+
+    .panel {
+        width: min(360px, 88%);
+        padding: 8px 12px;
+    }
+
+    .panel .heli {
+        display: none;
+    }
+
+    .panel .eyebrow {
+        font-size: 7px;
+    }
+
+    .panel h2 {
+        font-size: 15px;
+        margin: 2px 0 4px;
+    }
+
+    .panel p {
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
+
+    .panel button {
+        min-height: 32px;
+        padding: 6px 16px;
+        font-size: 9px;
+    }
+
+    .mobile-controls {
+        padding-top: 2px;
+    }
+
+    .mobile-controls button {
+        width: 40px;
+        height: 29px;
+    }
 }
