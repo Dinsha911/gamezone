@@ -10,7 +10,25 @@ let survivors=[],buildings=[],fuels=[],clouds=[],particles=[];
 let keys={},touching=false,touchY=0,seed=42;
 
 function rnd(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}
-function resize(){dpr=Math.min(devicePixelRatio||1,2);W=Math.max(320,wrap.clientWidth);H=Math.max(320,Math.min(560,W*.58));canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.height=H+"px";ctx.setTransform(dpr,0,0,dpr,0,0)}
+function resize(){
+
+    dpr = Math.min(devicePixelRatio || 1, 2);
+
+    W = Math.max(320, wrap.clientWidth);
+
+    H = Math.max(
+        230,
+        wrap.clientHeight || Math.min(560, W * 0.58)
+    );
+
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
 window.addEventListener("resize",resize); resize();
 
 function resetWorld(){
