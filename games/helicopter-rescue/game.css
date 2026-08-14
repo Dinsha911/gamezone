@@ -1,270 +1,876 @@
-*{box-sizing:border-box}
-:root{--bg:#07101b;--panel:#0d1a29;--line:rgba(75,220,255,.16);--cyan:#38e8ff;--yellow:#ffd54a;--text:#eaf7ff;--muted:#8ba4b7}
-html,body{margin:0;min-height:100%;background:radial-gradient(circle at 20% 10%,#102b42 0,transparent 38%),var(--bg);color:var(--text);font-family:"Exo 2",sans-serif}
-body{overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-.page{width:min(1180px,100%);margin:auto;padding:18px 18px 50px}
-header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 28px}
-.brand{font:900 1.15rem Orbitron;letter-spacing:2px;color:var(--cyan)}
-.back{font:700 .75rem Orbitron;letter-spacing:1px;color:var(--muted)}
-.intro{display:flex;justify-content:space-between;gap:30px;align-items:end;padding:18px 0 24px}
-.eyebrow{font:700 .68rem Orbitron;letter-spacing:2px;color:var(--cyan)}
-h1{font:900 clamp(2.4rem,6vw,5.2rem)/.88 Orbitron;margin:12px 0 18px;letter-spacing:-2px}
-h1 span{color:var(--yellow)}
-.intro p{max-width:650px;color:var(--muted);font-size:1.05rem;line-height:1.55;margin:0}
-.tips{min-width:210px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(13,26,41,.72);font-size:.78rem;line-height:1.35;color:var(--muted)}
-.tips b{color:var(--cyan);font:700 .65rem Orbitron}
-.game-shell{border:1px solid var(--line);border-radius:20px;background:rgba(5,13,23,.78);padding:12px;box-shadow:0 20px 70px rgba(0,0,0,.28)}
-.hud{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
-.hud div{background:#0b1826;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
-.hud small{display:block;color:var(--muted);font:700 .58rem Orbitron;letter-spacing:1px}
-.hud strong{display:block;margin-top:3px;font:700 1rem Orbitron}
-#gameWrap{position:relative;overflow:hidden;border-radius:14px;background:#071521}
-canvas{display:block;width:100%;height:auto;touch-action:none}
-.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:rgba(3,10,17,.72);backdrop-filter:blur(5px)}
-.hidden{display:none!important}
-.panel{width:min(460px,100%);padding:30px 24px;text-align:center;border:1px solid var(--line);border-radius:18px;background:rgba(10,24,38,.96);box-shadow:0 18px 60px rgba(0,0,0,.4)}
-.panel.compact{width:min(330px,100%)}
-.heli{font-size:4rem;margin-bottom:10px}
-h2{font:900 clamp(1.5rem,5vw,2.4rem) Orbitron;margin:12px 0}
-.panel p{color:var(--muted);line-height:1.5;margin:0 auto 22px;max-width:380px}
-button{border:0;border-radius:999px;background:linear-gradient(100deg,var(--cyan),#a8f8ff);color:#041018;padding:14px 25px;font:900 .78rem Orbitron;letter-spacing:1px;cursor:pointer;box-shadow:0 0 24px rgba(56,232,255,.2)}
-button:active{transform:scale(.97)}
-.result{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;margin:18px 0;border:1px solid var(--line);border-radius:12px}
-.result span{font:700 .65rem Orbitron;color:var(--muted)} .result b{font:900 1.2rem Orbitron;color:var(--yellow)}
-.mobile-controls{display:flex;justify-content:center;gap:14px;padding:12px 0 2px}
-.mobile-controls button{width:58px;height:44px;padding:0;background:#10283a;color:var(--cyan);border:1px solid var(--line);box-shadow:none}
-#pauseBtn{font-size:1rem}
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-.how article{padding:18px;border:1px solid var(--line);border-radius:14px;background:rgba(13,26,41,.55)}
-.how b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#06111a;font:900 .75rem Orbitron}
-.how h3{font:700 .8rem Orbitron;margin:13px 0 7px}.how p{margin:0;color:var(--muted);line-height:1.45;font-size:.9rem}
-@media(max-width:700px){.page{padding:12px 10px 30px}.intro{display:block}.tips{margin-top:18px}.hud strong{font-size:.82rem}.hud div{padding:8px}.how{grid-template-columns:1fr}.panel{padding:25px 18px}.mobile-controls{padding-bottom:max(4px,env(safe-area-inset-bottom))}}
-@media(max-width:430px){header{padding-bottom:18px}.intro p{font-size:.92rem}h1{font-size:2.5rem}.tips{display:none}.hud{gap:5px}.hud small{font-size:.5rem}.hud strong{font-size:.72rem}.mobile-controls button{width:54px;height:42px}}
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#07101b;
+    --panel:#0d1a29;
+    --line:rgba(75,220,255,.16);
+    --cyan:#38e8ff;
+    --yellow:#ffd54a;
+    --text:#eaf7ff;
+    --muted:#8ba4b7;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    min-height:100%;
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            #102b42 0,
+            transparent 38%
+        ),
+        var(--bg);
+    color:var(--text);
+    font-family:"Exo 2",sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 
 /* =========================================
-   HELICOPTER RESCUE
-   MOBILE LANDSCAPE FIX
-   ========================================= */
+   PAGE
+========================================= */
 
-@media screen and (orientation: landscape) and (max-height: 600px) {
+.page{
+    width:min(1180px,100%);
+    margin:auto;
+    padding:18px 18px 50px;
+}
 
-    body {
-        overflow: hidden;
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0 28px;
+}
+
+.brand{
+    font:900 1.15rem Orbitron;
+    letter-spacing:2px;
+    color:var(--cyan);
+}
+
+.back{
+    font:700 .75rem Orbitron;
+    letter-spacing:1px;
+    color:var(--muted);
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    padding:18px 0 24px;
+}
+
+.eyebrow{
+    font:700 .68rem Orbitron;
+    letter-spacing:2px;
+    color:var(--cyan);
+}
+
+h1{
+    font:900 clamp(2.4rem,6vw,5.2rem)/.88 Orbitron;
+    margin:12px 0 18px;
+    letter-spacing:-2px;
+}
+
+h1 span{
+    color:var(--yellow);
+}
+
+.intro p{
+    max-width:650px;
+    color:var(--muted);
+    font-size:1.05rem;
+    line-height:1.55;
+    margin:0;
+}
+
+.tips{
+    min-width:210px;
+    padding:16px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(13,26,41,.72);
+    font-size:.78rem;
+    line-height:1.35;
+    color:var(--muted);
+}
+
+.tips b{
+    color:var(--cyan);
+    font:700 .65rem Orbitron;
+}
+
+
+/* =========================================
+   GAME SHELL
+========================================= */
+
+.game-shell{
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(5,13,23,.78);
+    padding:12px;
+    box-shadow:0 20px 70px rgba(0,0,0,.28);
+}
+
+
+/* =========================================
+   HUD
+========================================= */
+
+.hud{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.hud div{
+    background:#0b1826;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:9px 12px;
+}
+
+.hud small{
+    display:block;
+    color:var(--muted);
+    font:700 .58rem Orbitron;
+    letter-spacing:1px;
+}
+
+.hud strong{
+    display:block;
+    margin-top:3px;
+    font:700 1rem Orbitron;
+}
+
+
+/* =========================================
+   GAME AREA
+========================================= */
+
+#gameWrap{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    border-radius:14px;
+    background:#071521;
+}
+
+canvas{
+    display:block;
+    width:100%;
+    height:100%;
+    touch-action:none;
+}
+
+
+/* =========================================
+   OVERLAYS
+========================================= */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    z-index:20;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:100%;
+
+    padding:20px;
+
+    background:rgba(3,10,17,.72);
+    backdrop-filter:blur(5px);
+}
+
+.hidden{
+    display:none!important;
+}
+
+
+/* =========================================
+   PANELS
+========================================= */
+
+.panel{
+    width:min(460px,100%);
+    max-height:calc(100% - 20px);
+
+    padding:30px 24px;
+
+    text-align:center;
+
+    border:1px solid var(--line);
+    border-radius:18px;
+
+    background:rgba(10,24,38,.96);
+
+    box-shadow:0 18px 60px rgba(0,0,0,.4);
+
+    overflow:auto;
+}
+
+.panel.compact{
+    width:min(330px,100%);
+}
+
+.heli{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+h2{
+    font:900 clamp(1.5rem,5vw,2.4rem) Orbitron;
+    margin:12px 0;
+}
+
+.panel p{
+    color:var(--muted);
+    line-height:1.5;
+    margin:0 auto 22px;
+    max-width:380px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button{
+    border:0;
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--cyan),
+            #a8f8ff
+        );
+
+    color:#041018;
+
+    padding:14px 25px;
+
+    font:900 .78rem Orbitron;
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 24px
+        rgba(56,232,255,.2);
+
+    touch-action:manipulation;
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 16px;
+    margin:18px 0;
+
+    border:1px solid var(--line);
+    border-radius:12px;
+}
+
+.result span{
+    font:700 .65rem Orbitron;
+    color:var(--muted);
+}
+
+.result b{
+    font:900 1.2rem Orbitron;
+    color:var(--yellow);
+}
+
+
+/* =========================================
+   MOBILE CONTROLS
+========================================= */
+
+.mobile-controls{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    padding:12px 0 2px;
+}
+
+.mobile-controls button{
+    width:58px;
+    height:44px;
+    padding:0;
+
+    background:#10283a;
+    color:var(--cyan);
+
+    border:1px solid var(--line);
+
+    box-shadow:none;
+}
+
+#pauseBtn{
+    font-size:1rem;
+}
+
+
+/* =========================================
+   HOW TO PLAY
+========================================= */
+
+.how{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:14px;
+}
+
+.how article{
+    padding:18px;
+
+    border:1px solid var(--line);
+    border-radius:14px;
+
+    background:rgba(13,26,41,.55);
+}
+
+.how b{
+    display:grid;
+    place-items:center;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+    color:#06111a;
+
+    font:900 .75rem Orbitron;
+}
+
+.how h3{
+    font:700 .8rem Orbitron;
+    margin:13px 0 7px;
+}
+
+.how p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.45;
+    font-size:.9rem;
+}
+
+
+/* =========================================
+   TABLET / NORMAL MOBILE
+========================================= */
+
+@media (max-width:700px){
+
+    .page{
+        padding:10px 8px 20px;
     }
 
-    .page {
-        width: 100%;
-        padding: 4px 8px 8px;
+    header{
+        padding:5px 0 12px;
     }
 
-    header {
-        padding: 2px 0 5px;
+    .intro{
+        display:none;
     }
 
-    /* Hide the introduction to save vertical space */
-    .intro {
-        display: none;
+    .game-shell{
+        padding:7px;
+        border-radius:14px;
     }
 
-    .game-shell {
-        padding: 5px;
+    .hud{
+        gap:5px;
+        margin-bottom:7px;
     }
 
-    .hud {
-        margin-bottom: 5px;
+    .hud div{
+        padding:7px 5px;
+        text-align:center;
     }
 
-    .hud div {
-        padding: 4px 6px;
+    .hud small{
+        font-size:.47rem;
+        letter-spacing:.5px;
     }
 
-    .hud small {
-        font-size: 8px;
-    }
-
-    .hud strong {
-        font-size: 11px;
+    .hud strong{
+        font-size:.72rem;
+        margin-top:2px;
     }
 
     /*
-       IMPORTANT:
-       Give the actual game area a controlled height.
+       Portrait game area.
+       This is deliberately controlled instead
+       of using canvas auto-height.
     */
 
-    #gameWrap {
-        position: relative;
-        width: 100%;
-        height: min(65vh, 360px);
-        min-height: 230px;
-        overflow: hidden;
+    #gameWrap{
+        width:100%;
+        height:58vh;
+        min-height:300px;
+        max-height:620px;
     }
 
-    #gameCanvas {
-        width: 100%;
-        height: 100%;
-        display: block;
+    canvas{
+        width:100%;
+        height:100%;
+    }
+
+    .overlay{
+        padding:10px;
+    }
+
+    .panel{
+        width:min(430px,94%);
+        max-height:92%;
+        padding:20px 16px;
+    }
+
+    .heli{
+        font-size:3rem;
+        margin-bottom:5px;
+    }
+
+    h2{
+        font-size:1.45rem;
+        margin:7px 0;
+    }
+
+    .panel p{
+        font-size:.88rem;
+        line-height:1.4;
+        margin-bottom:14px;
+    }
+
+    .panel button{
+        min-height:44px;
+        padding:11px 20px;
+    }
+
+    .mobile-controls{
+        padding:
+            8px
+            0
+            max(4px,env(safe-area-inset-bottom));
+        gap:10px;
+    }
+
+    .mobile-controls button{
+        width:54px;
+        height:42px;
+    }
+
+    .how{
+        display:none;
+    }
+}
+
+
+/* =========================================
+   SMALL PORTRAIT PHONES
+========================================= */
+
+@media (max-width:430px){
+
+    .page{
+        padding:6px 6px 14px;
+    }
+
+    header{
+        padding:3px 0 8px;
+    }
+
+    .brand{
+        font-size:.9rem;
+    }
+
+    .game-shell{
+        padding:5px;
+        border-radius:12px;
+    }
+
+    .hud{
+        gap:3px;
+        margin-bottom:5px;
+    }
+
+    .hud div{
+        padding:6px 3px;
+        border-radius:7px;
+    }
+
+    .hud small{
+        font-size:.40rem;
+    }
+
+    .hud strong{
+        font-size:.62rem;
+    }
+
+    #gameWrap{
+        height:56vh;
+        min-height:280px;
+        max-height:560px;
+    }
+
+    .overlay{
+        padding:7px;
+    }
+
+    .panel{
+        width:94%;
+        padding:15px 11px;
+        border-radius:14px;
+    }
+
+    .heli{
+        font-size:2.5rem;
+        margin-bottom:2px;
+    }
+
+    h2{
+        font-size:1.15rem;
+        margin:5px 0;
+    }
+
+    .panel p{
+        font-size:.78rem;
+        line-height:1.3;
+        margin-bottom:10px;
+    }
+
+    .panel button{
+        min-height:42px;
+        padding:9px 17px;
+        font-size:.68rem;
+    }
+
+    .mobile-controls{
+        gap:8px;
+        padding-top:6px;
+    }
+
+    .mobile-controls button{
+        width:50px;
+        height:40px;
+    }
+}
+
+
+/* =========================================
+   LANDSCAPE PHONES
+========================================= */
+
+@media screen and (orientation:landscape) and (max-height:700px){
+
+    html,
+    body{
+        height:100%;
+        min-height:100%;
+    }
+
+    body{
+        overflow:hidden;
+    }
+
+    .page{
+        width:100%;
+        height:100vh;
+
+        padding:
+            4px
+            8px
+            4px;
+
+        display:flex;
+        flex-direction:column;
+    }
+
+    header{
+        flex:0 0 auto;
+        padding:2px 0 4px;
+    }
+
+    .intro{
+        display:none;
+    }
+
+    .game-shell{
+        flex:1 1 auto;
+        min-height:0;
+
+        padding:5px;
+        border-radius:12px;
+
+        display:flex;
+        flex-direction:column;
+    }
+
+    .hud{
+        flex:0 0 auto;
+
+        grid-template-columns:repeat(4,1fr);
+
+        gap:4px;
+
+        margin-bottom:5px;
+    }
+
+    .hud div{
+        padding:4px 5px;
+        border-radius:7px;
+    }
+
+    .hud small{
+        font-size:.42rem;
+        letter-spacing:.4px;
+    }
+
+    .hud strong{
+        font-size:.65rem;
+        margin-top:1px;
     }
 
     /*
-       The start screen now fills exactly
-       the visible game area.
+       KEY FIX:
+       Game area uses whatever vertical space
+       remains after the HUD.
     */
 
-    .overlay {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        padding: 8px;
+    #gameWrap{
+        flex:1 1 auto;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        min-height:0;
 
-        overflow: hidden;
+        width:100%;
+        height:auto;
+
+        border-radius:9px;
+    }
+
+    canvas{
+        width:100%;
+        height:100%;
     }
 
     /*
-       Smaller start panel for landscape phones.
+       Start / pause / finish overlay
+       is locked to the game area.
     */
 
-    .panel {
-        width: min(430px, 90%);
-        max-height: 90%;
-        padding: 12px 18px;
+    .overlay{
+        inset:0;
+
+        width:100%;
+        height:100%;
+
+        padding:5px;
     }
 
-    .panel .heli {
-        font-size: 2rem;
-        margin-bottom: 2px;
+    .panel{
+        width:min(400px,88%);
+        max-height:94%;
+
+        padding:9px 14px;
+
+        border-radius:12px;
     }
 
-    .panel .eyebrow {
-        font-size: 8px;
+    .heli{
+        font-size:1.8rem;
+        margin-bottom:1px;
     }
 
-    .panel h2 {
-        font-size: 18px;
-        margin: 4px 0 6px;
+    .panel .eyebrow{
+        font-size:.46rem;
+        letter-spacing:1px;
     }
 
-    .panel p {
-        font-size: 11px;
-        line-height: 1.25;
-        margin-bottom: 9px;
+    h2{
+        font-size:1rem;
+        margin:3px 0;
     }
 
-    /*
-       Make sure the button has enough
-       size for a finger tap.
-    */
-
-    .panel button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        min-height: 38px;
-        padding: 8px 20px;
-
-        font-size: 10px;
+    .panel p{
+        font-size:.65rem;
+        line-height:1.25;
+        margin-bottom:6px;
     }
 
-    .mobile-controls {
-        padding: 4px 0 0;
-        gap: 8px;
+    .panel button{
+        min-height:32px;
+        padding:6px 16px;
+        font-size:.58rem;
     }
 
-    .mobile-controls button {
-        width: 44px;
-        height: 32px;
+    .result{
+        padding:6px 10px;
+        margin:7px 0;
     }
 
-    .how {
-        display: none;
+    .result span{
+        font-size:.48rem;
+    }
+
+    .result b{
+        font-size:.8rem;
+    }
+
+    .mobile-controls{
+        flex:0 0 auto;
+
+        padding:
+            3px
+            0
+            max(2px,env(safe-area-inset-bottom));
+
+        gap:7px;
+    }
+
+    .mobile-controls button{
+        width:43px;
+        height:31px;
+        font-size:.75rem;
+    }
+
+    .how{
+        display:none;
     }
 }
 
 
 /* =========================================
    VERY SHORT LANDSCAPE PHONES
-   ========================================= */
+========================================= */
 
-@media screen and (orientation: landscape) and (max-height: 420px) {
+@media screen and (orientation:landscape) and (max-height:430px){
 
-    .page {
-        padding: 2px 6px 5px;
+    .page{
+        padding:2px 5px 2px;
     }
 
-    header {
-        padding: 1px 0 3px;
+    header{
+        padding:1px 0 2px;
     }
 
-    .game-shell {
-        padding: 4px;
+    .brand{
+        font-size:.78rem;
     }
 
-    #gameWrap {
-        height: 62vh;
-        min-height: 190px;
+    .game-shell{
+        padding:3px;
+        border-radius:9px;
     }
 
-    .hud {
-        margin-bottom: 3px;
+    .hud{
+        gap:2px;
+        margin-bottom:3px;
     }
 
-    .hud div {
-        padding: 3px 5px;
+    .hud div{
+        padding:3px 3px;
     }
 
-    .hud small {
-        font-size: 7px;
+    .hud small{
+        font-size:.35rem;
     }
 
-    .hud strong {
-        font-size: 10px;
+    .hud strong{
+        font-size:.55rem;
     }
 
-    .overlay {
-        padding: 4px;
+    #gameWrap{
+        border-radius:7px;
     }
 
-    .panel {
-        width: min(360px, 88%);
-        padding: 8px 12px;
+    .overlay{
+        padding:3px;
     }
 
-    .panel .heli {
-        display: none;
+    .panel{
+        width:min(350px,86%);
+        padding:6px 10px;
     }
 
-    .panel .eyebrow {
-        font-size: 7px;
+    .heli{
+        display:none;
     }
 
-    .panel h2 {
-        font-size: 15px;
-        margin: 2px 0 4px;
+    .panel .eyebrow{
+        font-size:.38rem;
     }
 
-    .panel p {
-        font-size: 9px;
-        margin-bottom: 5px;
+    h2{
+        font-size:.82rem;
+        margin:2px 0;
     }
 
-    .panel button {
-        min-height: 32px;
-        padding: 6px 16px;
-        font-size: 9px;
+    .panel p{
+        font-size:.53rem;
+        margin-bottom:4px;
     }
 
-    .mobile-controls {
-        padding-top: 2px;
+    .panel button{
+        min-height:27px;
+        padding:4px 13px;
+        font-size:.48rem;
     }
 
-    .mobile-controls button {
-        width: 40px;
-        height: 29px;
+    .mobile-controls{
+        padding-top:2px;
+        gap:5px;
+    }
+
+    .mobile-controls button{
+        width:38px;
+        height:27px;
+        font-size:.65rem;
     }
 }
