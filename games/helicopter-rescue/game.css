@@ -1,22 +1,21 @@
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-:root{
-    --bg:#07101b;
-    --panel:#0d1a29;
-    --line:rgba(75,220,255,.16);
-    --cyan:#38e8ff;
-    --yellow:#ffd54a;
-    --text:#eaf7ff;
-    --muted:#8ba4b7;
+:root {
+    --bg: #07101b;
+    --panel: #0d1a29;
+    --line: rgba(75, 220, 255, 0.16);
+    --cyan: #38e8ff;
+    --yellow: #ffd54a;
+    --text: #eaf7ff;
+    --muted: #8ba4b7;
 }
 
 html,
-body{
-    margin:0;
-    width:100%;
-    min-height:100%;
+body {
+    margin: 0;
+    min-height: 100%;
     background:
         radial-gradient(
             circle at 20% 10%,
@@ -24,251 +23,254 @@ body{
             transparent 38%
         ),
         var(--bg);
-    color:var(--text);
-    font-family:"Exo 2",sans-serif;
+    color: var(--text);
+    font-family: "Exo 2", sans-serif;
 }
 
-body{
-    overflow-x:hidden;
+body {
+    overflow-x: hidden;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+.page {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 18px 18px 50px;
 }
 
-
-/* =========================================
-   PAGE
-========================================= */
-
-.page{
-    width:min(1180px,100%);
-    margin:auto;
-    padding:18px 18px 50px;
-}
-
-
-/* =========================================
+/* =========================
    HEADER
-========================================= */
+========================= */
 
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:10px 0 28px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 28px;
 }
 
-.brand{
-    font:900 1.15rem Orbitron;
-    letter-spacing:2px;
-    color:var(--cyan);
+.brand {
+    font: 900 1.15rem "Orbitron", sans-serif;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    text-decoration: none;
 }
 
-.back{
-    font:700 .75rem Orbitron;
-    letter-spacing:1px;
-    color:var(--muted);
+.back {
+    font: 700 0.75rem "Orbitron", sans-serif;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-decoration: none;
 }
 
+.back:hover {
+    color: #fff;
+}
 
-/* =========================================
+/* =========================
    INTRO
-========================================= */
+========================= */
 
-.intro{
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-    align-items:end;
-    padding:18px 0 24px;
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    padding: 18px 0 24px;
 }
 
-.eyebrow{
-    font:700 .68rem Orbitron;
-    letter-spacing:2px;
-    color:var(--cyan);
+.eyebrow {
+    font: 700 0.68rem "Orbitron", sans-serif;
+    letter-spacing: 2px;
+    color: var(--cyan);
 }
 
-h1{
-    font:900 clamp(2.4rem,6vw,5.2rem)/.88 Orbitron;
-    margin:12px 0 18px;
-    letter-spacing:-2px;
+h1 {
+    font: 900 clamp(2.4rem, 6vw, 5.2rem) / 0.88 "Orbitron", sans-serif;
+    margin: 12px 0 18px;
+    letter-spacing: -2px;
 }
 
-h1 span{
-    color:var(--yellow);
+h1 span {
+    color: var(--yellow);
 }
 
-.intro p{
-    max-width:650px;
-    color:var(--muted);
-    font-size:1.05rem;
-    line-height:1.55;
-    margin:0;
+.intro p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin: 0;
 }
 
-.tips{
-    min-width:210px;
-    padding:16px;
-    border:1px solid var(--line);
-    border-radius:14px;
-    background:rgba(13,26,41,.72);
-    font-size:.78rem;
-    line-height:1.35;
-    color:var(--muted);
+.tips {
+    min-width: 210px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(13, 26, 41, 0.72);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--muted);
 }
 
-.tips b{
-    color:var(--cyan);
-    font:700 .65rem Orbitron;
+.tips b {
+    color: var(--cyan);
+    font: 700 0.65rem "Orbitron", sans-serif;
 }
 
-
-/* =========================================
+/* =========================
    GAME SHELL
-========================================= */
+========================= */
 
-.game-shell{
-    border:1px solid var(--line);
-    border-radius:20px;
-    background:rgba(5,13,23,.78);
-    padding:12px;
-    box-shadow:0 20px 70px rgba(0,0,0,.28);
+.game-shell {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(5, 13, 23, 0.78);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
 }
 
-
-/* =========================================
+/* =========================
    HUD
-========================================= */
+========================= */
 
-.hud{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-bottom:10px;
+.hud {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
-.hud div{
-    background:#0b1826;
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:9px 12px;
+.hud div {
+    background: #0b1826;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 9px 12px;
 }
 
-.hud small{
-    display:block;
-    color:var(--muted);
-    font:700 .58rem Orbitron;
-    letter-spacing:1px;
+.hud small {
+    display: block;
+    color: var(--muted);
+    font: 700 0.58rem "Orbitron", sans-serif;
+    letter-spacing: 1px;
 }
 
-.hud strong{
-    display:block;
-    margin-top:3px;
-    font:700 1rem Orbitron;
+.hud strong {
+    display: block;
+    margin-top: 3px;
+    font: 700 1rem "Orbitron", sans-serif;
 }
 
+/* =========================
+   GAME VIEWPORT
+========================= */
 
-/* =========================================
-   GAME AREA
-========================================= */
+/*
+   IMPORTANT:
+   The JavaScript reads #gameWrap.clientWidth
+   and #gameWrap.clientHeight.
 
-#gameWrap{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-    border-radius:14px;
-    background:#071521;
+   Therefore we give the game viewport
+   an explicit 16:9 ratio.
+*/
+
+#gameWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #071521;
 }
 
-canvas{
-    display:block;
-    width:100%;
-    height:100%;
-    touch-action:none;
+/*
+   Canvas must occupy exactly the same
+   dimensions as #gameWrap.
+*/
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
 }
 
-
-/* =========================================
+/* =========================
    OVERLAYS
-========================================= */
+========================= */
 
-.overlay{
-    position:absolute;
-    inset:0;
-    z-index:20;
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width:100%;
-    height:100%;
+    padding: 20px;
 
-    padding:20px;
-
-    background:rgba(3,10,17,.72);
-    backdrop-filter:blur(5px);
+    background: rgba(3, 10, 17, 0.72);
+    backdrop-filter: blur(5px);
 }
 
-.hidden{
-    display:none!important;
+.overlay.hidden {
+    display: none !important;
 }
 
+/* =========================
+   START / PAUSE / GAME OVER
+========================= */
 
-/* =========================================
-   PANELS
-========================================= */
+.panel {
+    width: min(460px, 100%);
+    max-height: 92%;
 
-.panel{
-    width:min(460px,100%);
-    max-height:calc(100% - 20px);
+    padding: 30px 24px;
 
-    padding:30px 24px;
+    text-align: center;
 
-    text-align:center;
+    border: 1px solid var(--line);
+    border-radius: 18px;
 
-    border:1px solid var(--line);
-    border-radius:18px;
+    background: rgba(10, 24, 38, 0.96);
 
-    background:rgba(10,24,38,.96);
+    box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.4);
 
-    box-shadow:0 18px 60px rgba(0,0,0,.4);
-
-    overflow:auto;
+    overflow: auto;
 }
 
-.panel.compact{
-    width:min(330px,100%);
+.panel.compact {
+    width: min(330px, 100%);
 }
 
-.heli{
-    font-size:4rem;
-    margin-bottom:10px;
+.heli {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 10px;
 }
 
-h2{
-    font:900 clamp(1.5rem,5vw,2.4rem) Orbitron;
-    margin:12px 0;
+.panel h2 {
+    font: 900 clamp(1.5rem, 5vw, 2.4rem) "Orbitron", sans-serif;
+    margin: 12px 0;
 }
 
-.panel p{
-    color:var(--muted);
-    line-height:1.5;
-    margin:0 auto 22px;
-    max-width:380px;
+.panel p {
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0 auto 22px;
+    max-width: 380px;
 }
 
+/* =========================
+   BUTTON
+========================= */
 
-/* =========================================
-   BUTTONS
-========================================= */
-
-button{
-    border:0;
-    border-radius:999px;
+button {
+    border: 0;
+    border-radius: 999px;
 
     background:
         linear-gradient(
@@ -277,600 +279,570 @@ button{
             #a8f8ff
         );
 
-    color:#041018;
+    color: #041018;
 
-    padding:14px 25px;
+    padding: 14px 25px;
 
-    font:900 .78rem Orbitron;
-    letter-spacing:1px;
+    font: 900 0.78rem "Orbitron", sans-serif;
+    letter-spacing: 1px;
 
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 0 24px
-        rgba(56,232,255,.2);
+        0 0 24px rgba(56, 232, 255, 0.2);
 
-    touch-action:manipulation;
+    touch-action: manipulation;
 }
 
-button:active{
-    transform:scale(.97);
+button:active {
+    transform: scale(0.97);
 }
 
-
-/* =========================================
+/* =========================
    RESULT
-========================================= */
+========================= */
 
-.result{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    padding:12px 16px;
-    margin:18px 0;
+    padding: 12px 16px;
+    margin: 18px 0;
 
-    border:1px solid var(--line);
-    border-radius:12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
 }
 
-.result span{
-    font:700 .65rem Orbitron;
-    color:var(--muted);
+.result span {
+    font: 700 0.65rem "Orbitron", sans-serif;
+    color: var(--muted);
 }
 
-.result b{
-    font:900 1.2rem Orbitron;
-    color:var(--yellow);
+.result b {
+    font: 900 1.2rem "Orbitron", sans-serif;
+    color: var(--yellow);
 }
 
-
-/* =========================================
+/* =========================
    MOBILE CONTROLS
-========================================= */
+========================= */
 
-.mobile-controls{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    padding:12px 0 2px;
+.mobile-controls {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    padding: 12px 0 2px;
 }
 
-.mobile-controls button{
-    width:58px;
-    height:44px;
-    padding:0;
+.mobile-controls button {
+    width: 58px;
+    height: 44px;
 
-    background:#10283a;
-    color:var(--cyan);
+    padding: 0;
 
-    border:1px solid var(--line);
+    background: #10283a;
+    color: var(--cyan);
 
-    box-shadow:none;
+    border: 1px solid var(--line);
+
+    box-shadow: none;
+
+    font-size: 1rem;
 }
 
-#pauseBtn{
-    font-size:1rem;
+.mobile-controls button:active {
+    background: #193b52;
 }
 
-
-/* =========================================
+/* =========================
    HOW TO PLAY
-========================================= */
+========================= */
 
-.how{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:14px;
+.how {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    margin-top: 14px;
 }
 
-.how article{
-    padding:18px;
+.how article {
+    padding: 18px;
 
-    border:1px solid var(--line);
-    border-radius:14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
 
-    background:rgba(13,26,41,.55);
+    background: rgba(13, 26, 41, 0.55);
 }
 
-.how b{
-    display:grid;
-    place-items:center;
+.how b {
+    display: grid;
+    place-items: center;
 
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:var(--cyan);
-    color:#06111a;
+    background: var(--cyan);
+    color: #06111a;
 
-    font:900 .75rem Orbitron;
+    font: 900 0.75rem "Orbitron", sans-serif;
 }
 
-.how h3{
-    font:700 .8rem Orbitron;
-    margin:13px 0 7px;
+.how h3 {
+    font: 700 0.8rem "Orbitron", sans-serif;
+    margin: 13px 0 7px;
 }
 
-.how p{
-    margin:0;
-    color:var(--muted);
-    line-height:1.45;
-    font-size:.9rem;
+.how p {
+    margin: 0;
+
+    color: var(--muted);
+
+    line-height: 1.45;
+    font-size: 0.9rem;
 }
 
+/* =========================================================
+   TABLET / PHONE
+========================================================= */
 
-/* =========================================
-   TABLET / NORMAL MOBILE
-========================================= */
+@media (max-width: 700px) {
 
-@media (max-width:700px){
-
-    .page{
-        padding:10px 8px 20px;
+    .page {
+        padding: 12px 10px 30px;
     }
 
-    header{
-        padding:5px 0 12px;
+    header {
+        padding-bottom: 18px;
     }
 
-    .intro{
-        display:none;
+    .intro {
+        display: block;
     }
 
-    .game-shell{
-        padding:7px;
-        border-radius:14px;
+    .intro p {
+        font-size: 0.92rem;
     }
 
-    .hud{
-        gap:5px;
-        margin-bottom:7px;
-    }
-
-    .hud div{
-        padding:7px 5px;
-        text-align:center;
-    }
-
-    .hud small{
-        font-size:.47rem;
-        letter-spacing:.5px;
-    }
-
-    .hud strong{
-        font-size:.72rem;
-        margin-top:2px;
+    .tips {
+        margin-top: 18px;
     }
 
     /*
-       Portrait game area.
-       This is deliberately controlled instead
-       of using canvas auto-height.
+       Keep the game at 16:9.
+       Do NOT change this to 4:5.
     */
 
-    #gameWrap{
-        width:100%;
-        height:58vh;
-        min-height:300px;
-        max-height:620px;
+    #gameWrap {
+        aspect-ratio: 16 / 9;
+        min-height: 0;
     }
 
-    canvas{
-        width:100%;
-        height:100%;
+    .game-shell {
+        padding: 8px;
+        border-radius: 15px;
     }
 
-    .overlay{
-        padding:10px;
+    .hud {
+        gap: 5px;
+        margin-bottom: 7px;
     }
 
-    .panel{
-        width:min(430px,94%);
-        max-height:92%;
-        padding:20px 16px;
+    .hud div {
+        padding: 7px;
     }
 
-    .heli{
-        font-size:3rem;
-        margin-bottom:5px;
+    .hud small {
+        font-size: 0.5rem;
     }
 
-    h2{
-        font-size:1.45rem;
-        margin:7px 0;
+    .hud strong {
+        font-size: 0.78rem;
     }
 
-    .panel p{
-        font-size:.88rem;
-        line-height:1.4;
-        margin-bottom:14px;
+    .overlay {
+        padding: 10px;
     }
 
-    .panel button{
-        min-height:44px;
-        padding:11px 20px;
+    .panel {
+        width: min(390px, 96%);
+        max-height: 94%;
+        padding: 18px 15px;
     }
 
-    .mobile-controls{
-        padding:
-            8px
-            0
-            max(4px,env(safe-area-inset-bottom));
-        gap:10px;
+    .heli {
+        font-size: 2.5rem;
+        margin-bottom: 5px;
     }
 
-    .mobile-controls button{
-        width:54px;
-        height:42px;
+    .panel h2 {
+        font-size: 1.55rem;
+        margin: 7px 0;
     }
 
-    .how{
-        display:none;
-    }
-}
-
-
-/* =========================================
-   SMALL PORTRAIT PHONES
-========================================= */
-
-@media (max-width:430px){
-
-    .page{
-        padding:6px 6px 14px;
+    .panel p {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        margin-bottom: 12px;
     }
 
-    header{
-        padding:3px 0 8px;
+    .panel button {
+        min-height: 46px;
+        padding: 10px 20px;
     }
 
-    .brand{
-        font-size:.9rem;
+    .mobile-controls {
+        padding-top: 8px;
+        padding-bottom: 3px;
     }
 
-    .game-shell{
-        padding:5px;
-        border-radius:12px;
+    .mobile-controls button {
+        width: 52px;
+        height: 40px;
     }
 
-    .hud{
-        gap:3px;
-        margin-bottom:5px;
-    }
-
-    .hud div{
-        padding:6px 3px;
-        border-radius:7px;
-    }
-
-    .hud small{
-        font-size:.40rem;
-    }
-
-    .hud strong{
-        font-size:.62rem;
-    }
-
-    #gameWrap{
-        height:56vh;
-        min-height:280px;
-        max-height:560px;
-    }
-
-    .overlay{
-        padding:7px;
-    }
-
-    .panel{
-        width:94%;
-        padding:15px 11px;
-        border-radius:14px;
-    }
-
-    .heli{
-        font-size:2.5rem;
-        margin-bottom:2px;
-    }
-
-    h2{
-        font-size:1.15rem;
-        margin:5px 0;
-    }
-
-    .panel p{
-        font-size:.78rem;
-        line-height:1.3;
-        margin-bottom:10px;
-    }
-
-    .panel button{
-        min-height:42px;
-        padding:9px 17px;
-        font-size:.68rem;
-    }
-
-    .mobile-controls{
-        gap:8px;
-        padding-top:6px;
-    }
-
-    .mobile-controls button{
-        width:50px;
-        height:40px;
+    .how {
+        grid-template-columns: 1fr;
     }
 }
 
+/* =========================================================
+   SMALL PHONES
+========================================================= */
 
-/* =========================================
+@media (max-width: 430px) {
+
+    .page {
+        padding: 10px 8px 25px;
+    }
+
+    header {
+        padding-bottom: 14px;
+    }
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    .back {
+        font-size: 0.65rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .tips {
+        display: none;
+    }
+
+    .game-shell {
+        padding: 6px;
+    }
+
+    .hud {
+        gap: 4px;
+    }
+
+    .hud div {
+        padding: 6px 5px;
+    }
+
+    .hud small {
+        font-size: 0.45rem;
+    }
+
+    .hud strong {
+        font-size: 0.68rem;
+    }
+
+    #gameWrap {
+        aspect-ratio: 16 / 9;
+        border-radius: 10px;
+    }
+
+    .overlay {
+        padding: 7px;
+    }
+
+    .panel {
+        width: 96%;
+        max-height: 95%;
+        padding: 12px 10px;
+        border-radius: 14px;
+    }
+
+    .heli {
+        font-size: 2rem;
+        margin-bottom: 3px;
+    }
+
+    .panel .eyebrow {
+        font-size: 0.52rem;
+    }
+
+    .panel h2 {
+        font-size: 1.25rem;
+        margin: 4px 0 6px;
+    }
+
+    .panel p {
+        font-size: 0.68rem;
+        line-height: 1.25;
+        margin-bottom: 7px;
+    }
+
+    .panel button {
+        min-height: 44px;
+        width: 100%;
+        font-size: 0.68rem;
+        padding: 8px 12px;
+    }
+
+    .mobile-controls {
+        gap: 8px;
+        padding-top: 6px;
+    }
+
+    .mobile-controls button {
+        width: 48px;
+        height: 38px;
+    }
+}
+
+/* =========================================================
    LANDSCAPE PHONES
-========================================= */
+========================================================= */
 
-@media screen and (orientation:landscape) and (max-height:700px){
+/*
+   This is the important fix.
 
-    html,
-    body{
-        height:100%;
-        min-height:100%;
+   We use the phone's WIDTH to determine
+   the game height through the 16:9 ratio.
+
+   We do NOT use viewport height for the
+   canvas itself.
+*/
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+
+    body {
+        overflow-x: hidden;
     }
 
-    body{
-        overflow:hidden;
+    .page {
+        width: 100%;
+        max-width: none;
+        padding: 5px 8px 12px;
     }
 
-    .page{
-        width:100%;
-        height:100vh;
-
-        padding:
-            4px
-            8px
-            4px;
-
-        display:flex;
-        flex-direction:column;
+    header {
+        padding: 2px 0 6px;
     }
 
-    header{
-        flex:0 0 auto;
-        padding:2px 0 4px;
+    .intro {
+        display: none;
     }
 
-    .intro{
-        display:none;
+    .game-shell {
+        padding: 5px;
+        border-radius: 12px;
     }
 
-    .game-shell{
-        flex:1 1 auto;
-        min-height:0;
-
-        padding:5px;
-        border-radius:12px;
-
-        display:flex;
-        flex-direction:column;
+    .hud {
+        margin-bottom: 4px;
+        gap: 4px;
     }
 
-    .hud{
-        flex:0 0 auto;
-
-        grid-template-columns:repeat(4,1fr);
-
-        gap:4px;
-
-        margin-bottom:5px;
+    .hud div {
+        padding: 4px 6px;
+        border-radius: 7px;
     }
 
-    .hud div{
-        padding:4px 5px;
-        border-radius:7px;
+    .hud small {
+        font-size: 0.42rem;
     }
 
-    .hud small{
-        font-size:.42rem;
-        letter-spacing:.4px;
-    }
-
-    .hud strong{
-        font-size:.65rem;
-        margin-top:1px;
+    .hud strong {
+        font-size: 0.65rem;
+        margin-top: 1px;
     }
 
     /*
-       KEY FIX:
-       Game area uses whatever vertical space
-       remains after the HUD.
+       Full game width.
+       Height is automatically calculated
+       from 16:9.
     */
 
-    #gameWrap{
-        flex:1 1 auto;
-
-        min-height:0;
-
-        width:100%;
-        height:auto;
-
-        border-radius:9px;
+    #gameWrap {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        min-height: 0;
+        border-radius: 9px;
     }
 
-    canvas{
-        width:100%;
-        height:100%;
+    #gameCanvas {
+        width: 100%;
+        height: 100%;
     }
 
-    /*
-       Start / pause / finish overlay
-       is locked to the game area.
-    */
-
-    .overlay{
-        inset:0;
-
-        width:100%;
-        height:100%;
-
-        padding:5px;
+    .overlay {
+        padding: 5px;
     }
 
-    .panel{
-        width:min(400px,88%);
-        max-height:94%;
-
-        padding:9px 14px;
-
-        border-radius:12px;
+    .panel {
+        width: min(360px, 90%);
+        max-height: 94%;
+        padding: 8px 12px;
+        border-radius: 12px;
     }
 
-    .heli{
-        font-size:1.8rem;
-        margin-bottom:1px;
+    .heli {
+        font-size: 1.6rem;
+        margin-bottom: 2px;
     }
 
-    .panel .eyebrow{
-        font-size:.46rem;
-        letter-spacing:1px;
+    .panel .eyebrow {
+        font-size: 0.45rem;
     }
 
-    h2{
-        font-size:1rem;
-        margin:3px 0;
+    .panel h2 {
+        font-size: 1rem;
+        margin: 3px 0 4px;
     }
 
-    .panel p{
-        font-size:.65rem;
-        line-height:1.25;
-        margin-bottom:6px;
+    .panel p {
+        font-size: 0.58rem;
+        line-height: 1.2;
+        margin-bottom: 5px;
     }
 
-    .panel button{
-        min-height:32px;
-        padding:6px 16px;
-        font-size:.58rem;
+    .panel button {
+        min-height: 34px;
+        padding: 6px 16px;
+        font-size: 0.58rem;
     }
 
-    .result{
-        padding:6px 10px;
-        margin:7px 0;
+    .mobile-controls {
+        padding: 3px 0 0;
+        gap: 6px;
     }
 
-    .result span{
-        font-size:.48rem;
+    .mobile-controls button {
+        width: 42px;
+        height: 30px;
+        font-size: 0.75rem;
     }
 
-    .result b{
-        font-size:.8rem;
-    }
-
-    .mobile-controls{
-        flex:0 0 auto;
-
-        padding:
-            3px
-            0
-            max(2px,env(safe-area-inset-bottom));
-
-        gap:7px;
-    }
-
-    .mobile-controls button{
-        width:43px;
-        height:31px;
-        font-size:.75rem;
-    }
-
-    .how{
-        display:none;
+    .how {
+        display: none;
     }
 }
 
-
-/* =========================================
+/* =========================================================
    VERY SHORT LANDSCAPE PHONES
-========================================= */
+========================================================= */
 
-@media screen and (orientation:landscape) and (max-height:430px){
+@media screen and (orientation: landscape)
+    and (max-width: 900px)
+    and (max-height: 420px) {
 
-    .page{
-        padding:2px 5px 2px;
+    .page {
+        padding: 2px 6px 7px;
     }
 
-    header{
-        padding:1px 0 2px;
+    header {
+        padding: 1px 0 3px;
     }
 
-    .brand{
-        font-size:.78rem;
+    .game-shell {
+        padding: 4px;
     }
 
-    .game-shell{
-        padding:3px;
-        border-radius:9px;
+    .hud {
+        margin-bottom: 3px;
     }
 
-    .hud{
-        gap:2px;
-        margin-bottom:3px;
+    .hud div {
+        padding: 3px 5px;
     }
 
-    .hud div{
-        padding:3px 3px;
+    .hud small {
+        font-size: 0.38rem;
     }
 
-    .hud small{
-        font-size:.35rem;
+    .hud strong {
+        font-size: 0.58rem;
     }
 
-    .hud strong{
-        font-size:.55rem;
+    #gameWrap {
+        aspect-ratio: 16 / 9;
+        min-height: 0;
     }
 
-    #gameWrap{
-        border-radius:7px;
+    .overlay {
+        padding: 3px;
     }
 
-    .overlay{
-        padding:3px;
+    .panel {
+        width: min(330px, 88%);
+        padding: 6px 10px;
     }
 
-    .panel{
-        width:min(350px,86%);
-        padding:6px 10px;
+    .heli {
+        display: none;
     }
 
-    .heli{
-        display:none;
+    .panel .eyebrow {
+        font-size: 0.4rem;
     }
 
-    .panel .eyebrow{
-        font-size:.38rem;
+    .panel h2 {
+        font-size: 0.9rem;
+        margin: 2px 0 3px;
     }
 
-    h2{
-        font-size:.82rem;
-        margin:2px 0;
+    .panel p {
+        font-size: 0.52rem;
+        margin-bottom: 4px;
     }
 
-    .panel p{
-        font-size:.53rem;
-        margin-bottom:4px;
+    .panel button {
+        min-height: 30px;
+        padding: 5px 14px;
+        font-size: 0.52rem;
     }
 
-    .panel button{
-        min-height:27px;
-        padding:4px 13px;
-        font-size:.48rem;
+    .mobile-controls {
+        padding-top: 2px;
     }
 
-    .mobile-controls{
-        padding-top:2px;
-        gap:5px;
+    .mobile-controls button {
+        width: 38px;
+        height: 27px;
+    }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .mobile-controls button {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
 
-    .mobile-controls button{
-        width:38px;
-        height:27px;
-        font-size:.65rem;
+    #gameCanvas {
+        touch-action: none;
+        -webkit-user-select: none;
+        user-select: none;
     }
 }
