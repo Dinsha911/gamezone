@@ -1,1 +1,242 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Traffic Rush — GameZone</title><link rel="stylesheet" href="../../css/style.css"></head><body><main class="container"><section class="hero"><div class="hero-copy"><span class="eyebrow">GAMEZONE</span><h1>TRAFFIC<br>RUSH</h1><p>Coming soon. This slot is ready for the next game.</p><div class="actions"><a class="btn primary" href="../../">← BACK TO GAMEZONE</a></div></div></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Traffic Rush — GameZone</title>
+<meta name="description" content="Play Traffic Rush on GameZone. Dodge traffic, survive and beat your high score.">
+<meta name="theme-color" content="#060a10">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="game.css">
+</head>
+
+<body class="game-page">
+
+<div class="page">
+
+<header>
+    <a class="brand" href="../../">GAMEZONE</a>
+    <a class="back" href="../../">← MORE GAMES</a>
+</header>
+
+<main>
+
+<section class="intro">
+    <div>
+        <div class="eyebrow">ARCADE • RACING</div>
+
+        <h1>TRAFFIC<br><span>RUSH</span></h1>
+
+        <p>
+            Dodge incoming traffic, survive the rush and chase your highest score.
+        </p>
+    </div>
+
+    <div class="tips">
+        <b>DESKTOP</b><br>
+        ← → / A D to steer
+        <br><br>
+
+        <b>MOBILE</b><br>
+        Use the steering buttons
+    </div>
+</section>
+
+
+<section class="game-shell">
+
+    <div class="hud">
+
+        <div>
+            <small>SCORE</small>
+            <strong id="score">0</strong>
+        </div>
+
+        <div>
+            <small>BEST</small>
+            <strong id="best">0</strong>
+        </div>
+
+        <div>
+            <small>SPEED</small>
+            <strong id="speed">1x</strong>
+        </div>
+
+        <div>
+            <small>LIVES</small>
+            <strong id="lives">3</strong>
+        </div>
+
+    </div>
+
+
+    <div id="gameWrap">
+
+        <canvas id="gameCanvas"></canvas>
+
+
+        <!-- START SCREEN -->
+
+        <div id="startOverlay" class="overlay">
+
+            <div class="panel">
+
+                <div class="car-icon">🚗</div>
+
+                <div class="eyebrow">
+                    GAMEZONE ORIGINAL
+                </div>
+
+                <h2>TRAFFIC RUSH</h2>
+
+                <p>
+                    Dodge the traffic, survive as long as possible
+                    and beat your best score.
+                </p>
+
+                <button id="startBtn">
+                    START DRIVE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAUSE SCREEN -->
+
+        <div id="pauseOverlay" class="overlay hidden">
+
+            <div class="panel compact">
+
+                <div class="eyebrow">
+                    DRIVE PAUSED
+                </div>
+
+                <h2>PAUSED</h2>
+
+                <button id="resumeBtn">
+                    RESUME
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME OVER -->
+
+        <div id="gameOverOverlay" class="overlay hidden">
+
+            <div class="panel">
+
+                <div class="eyebrow">
+                    RACE OVER
+                </div>
+
+                <h2 id="overTitle">
+                    GAME OVER
+                </h2>
+
+                <p id="overText">
+                    Traffic got you. Try again and beat your best score.
+                </p>
+
+                <div class="result">
+
+                    <span>SCORE</span>
+
+                    <b id="finalScore">
+                        0
+                    </b>
+
+                </div>
+
+                <div class="result">
+
+                    <span>BEST</span>
+
+                    <b id="finalBest">
+                        0
+                    </b>
+
+                </div>
+
+                <button id="restartBtn">
+                    DRIVE AGAIN
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOBILE CONTROLS -->
+
+    <div class="mobile-controls">
+
+        <button
+            id="leftBtn"
+            aria-label="Steer left">
+            ◀
+        </button>
+
+        <button
+            id="pauseBtn"
+            aria-label="Pause game">
+            Ⅱ
+        </button>
+
+        <button
+            id="rightBtn"
+            aria-label="Steer right">
+            ▶
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="how">
+
+    <article>
+        <b>1</b>
+        <h3>STEER</h3>
+        <p>
+            Move between lanes to avoid incoming cars.
+        </p>
+    </article>
+
+    <article>
+        <b>2</b>
+        <h3>DODGE</h3>
+        <p>
+            Stay alert as traffic gets faster.
+        </p>
+    </article>
+
+    <article>
+        <b>3</b>
+        <h3>SURVIVE</h3>
+        <p>
+            Keep driving and beat your highest score.
+        </p>
+    </article>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
