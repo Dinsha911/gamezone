@@ -1,0 +1,804 @@
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#060a10;
+    --panel:#0d1520;
+    --panel2:#101b29;
+    --line:rgba(75,220,255,.16);
+    --cyan:#38e8ff;
+    --yellow:#ffd54a;
+    --red:#ff5d6c;
+    --text:#eaf7ff;
+    --muted:#8ba4b7;
+}
+
+html,
+body{
+    margin:0;
+    min-height:100%;
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            #102b42 0,
+            transparent 38%
+        ),
+        var(--bg);
+    color:var(--text);
+    font-family:"Exo 2",sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+.page{
+    width:min(1180px,100%);
+    margin:auto;
+    padding:18px 18px 50px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0 28px;
+}
+
+.brand{
+    font:900 1.15rem Orbitron,sans-serif;
+    letter-spacing:2px;
+    color:var(--cyan);
+}
+
+.back{
+    font:700 .75rem Orbitron,sans-serif;
+    letter-spacing:1px;
+    color:var(--muted);
+}
+
+.back:hover{
+    color:#fff;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    padding:18px 0 24px;
+}
+
+.eyebrow{
+    font:700 .68rem Orbitron,sans-serif;
+    letter-spacing:2px;
+    color:var(--cyan);
+}
+
+h1{
+    font:900 clamp(2.4rem,6vw,5.2rem)/.88 Orbitron,sans-serif;
+    margin:12px 0 18px;
+    letter-spacing:-2px;
+}
+
+h1 span{
+    color:var(--yellow);
+}
+
+.intro p{
+    max-width:650px;
+    color:var(--muted);
+    font-size:1.05rem;
+    line-height:1.55;
+    margin:0;
+}
+
+.tips{
+    min-width:210px;
+    padding:16px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(13,26,41,.72);
+    font-size:.78rem;
+    line-height:1.35;
+    color:var(--muted);
+}
+
+.tips b{
+    color:var(--cyan);
+    font:700 .65rem Orbitron,sans-serif;
+}
+
+/* =========================
+   GAME SHELL
+========================= */
+
+.game-shell{
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:rgba(5,13,23,.78);
+    padding:12px;
+    box-shadow:0 20px 70px rgba(0,0,0,.28);
+}
+
+/* =========================
+   HUD
+========================= */
+
+.hud{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.hud div{
+    background:#0b1826;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:9px 12px;
+}
+
+.hud small{
+    display:block;
+    color:var(--muted);
+    font:700 .58rem Orbitron,sans-serif;
+    letter-spacing:1px;
+}
+
+.hud strong{
+    display:block;
+    margin-top:3px;
+    font:700 1rem Orbitron,sans-serif;
+}
+
+/* =========================
+   GAME AREA
+========================= */
+
+#gameWrap{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    border-radius:14px;
+    background:#071521;
+
+    /*
+       Fixed game ratio.
+       This keeps the complete road
+       visible on desktop and mobile.
+    */
+    aspect-ratio:16 / 9;
+}
+
+#gameCanvas{
+    display:block;
+    width:100%;
+    height:100%;
+    touch-action:none;
+}
+
+/* =========================
+   OVERLAYS
+========================= */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    z-index:10;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(3,10,17,.72);
+    backdrop-filter:blur(5px);
+}
+
+.hidden{
+    display:none!important;
+}
+
+.panel{
+    width:min(460px,100%);
+    max-height:calc(100% - 20px);
+
+    padding:30px 24px;
+
+    text-align:center;
+
+    border:1px solid var(--line);
+    border-radius:18px;
+
+    background:rgba(10,24,38,.96);
+
+    box-shadow:
+        0 18px 60px rgba(0,0,0,.4);
+
+    overflow:auto;
+}
+
+.panel.compact{
+    width:min(330px,100%);
+}
+
+.car-icon{
+    font-size:4rem;
+    line-height:1;
+    margin-bottom:10px;
+}
+
+.panel h2{
+    font:900 clamp(1.5rem,5vw,2.4rem) Orbitron,sans-serif;
+    margin:12px 0;
+}
+
+.panel p{
+    color:var(--muted);
+    line-height:1.5;
+    margin:0 auto 22px;
+    max-width:380px;
+}
+
+.panel button{
+    border:0;
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--cyan),
+            #a8f8ff
+        );
+
+    color:#041018;
+
+    padding:14px 25px;
+
+    font:900 .78rem Orbitron,sans-serif;
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 24px rgba(56,232,255,.2);
+
+    min-height:46px;
+}
+
+.panel button:active{
+    transform:scale(.97);
+}
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 16px;
+    margin:12px 0;
+
+    border:1px solid var(--line);
+    border-radius:12px;
+
+    background:rgba(255,255,255,.025);
+}
+
+.result span{
+    font:700 .65rem Orbitron,sans-serif;
+    color:var(--muted);
+}
+
+.result b{
+    font:900 1.2rem Orbitron,sans-serif;
+    color:var(--yellow);
+}
+
+/* =========================
+   MOBILE CONTROLS
+========================= */
+
+.mobile-controls{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+
+    padding:12px 0 2px;
+}
+
+.mobile-controls button{
+    width:58px;
+    height:44px;
+
+    padding:0;
+
+    border-radius:12px;
+
+    background:#10283a;
+    color:var(--cyan);
+
+    border:1px solid var(--line);
+
+    box-shadow:none;
+
+    font:900 1rem Orbitron,sans-serif;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.mobile-controls button:active{
+    background:#183b52;
+    transform:scale(.94);
+}
+
+#pauseBtn{
+    font-size:1rem;
+}
+
+/* =========================
+   HOW TO PLAY
+========================= */
+
+.how{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:14px;
+}
+
+.how article{
+    padding:18px;
+
+    border:1px solid var(--line);
+    border-radius:14px;
+
+    background:rgba(13,26,41,.55);
+}
+
+.how b{
+    display:grid;
+    place-items:center;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+    color:#06111a;
+
+    font:900 .75rem Orbitron,sans-serif;
+}
+
+.how h3{
+    font:700 .8rem Orbitron,sans-serif;
+    margin:13px 0 7px;
+}
+
+.how p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.45;
+    font-size:.9rem;
+}
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .page{
+        padding:12px 10px 30px;
+    }
+
+    header{
+        padding-bottom:18px;
+    }
+
+    .intro{
+        display:block;
+        padding-top:8px;
+    }
+
+    .intro p{
+        font-size:.92rem;
+    }
+
+    .tips{
+        margin-top:18px;
+    }
+
+    .game-shell{
+        padding:8px;
+        border-radius:16px;
+    }
+
+    /*
+       Slightly taller ratio on phones
+       so the road remains easy to see.
+    */
+    #gameWrap{
+        aspect-ratio:4 / 3;
+        min-height:0;
+    }
+
+    .hud{
+        gap:5px;
+        margin-bottom:7px;
+    }
+
+    .hud div{
+        padding:7px 8px;
+    }
+
+    .hud small{
+        font-size:.5rem;
+    }
+
+    .hud strong{
+        font-size:.82rem;
+    }
+
+    .mobile-controls{
+        padding-top:9px;
+        padding-bottom:3px;
+        gap:10px;
+    }
+
+    .mobile-controls button{
+        width:58px;
+        height:46px;
+    }
+
+    .panel{
+        width:min(390px,100%);
+        padding:22px 17px;
+    }
+
+    .car-icon{
+        font-size:2.8rem;
+        margin-bottom:6px;
+    }
+
+    .panel h2{
+        font-size:1.7rem;
+        margin:7px 0 9px;
+    }
+
+    .panel p{
+        font-size:.82rem;
+        line-height:1.35;
+        margin-bottom:14px;
+    }
+
+    .panel button{
+        width:100%;
+        min-height:50px;
+    }
+
+    .how{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media(max-width:430px){
+
+    .page{
+        padding:10px 8px 25px;
+    }
+
+    .brand{
+        font-size:1rem;
+    }
+
+    .back{
+        font-size:.65rem;
+    }
+
+    .intro{
+        padding-bottom:14px;
+    }
+
+    .intro h1{
+        font-size:2.5rem;
+    }
+
+    .tips{
+        display:none;
+    }
+
+    .hud{
+        gap:4px;
+    }
+
+    .hud div{
+        padding:6px 5px;
+    }
+
+    .hud small{
+        font-size:.46rem;
+        letter-spacing:.5px;
+    }
+
+    .hud strong{
+        font-size:.72rem;
+    }
+
+    #gameWrap{
+        aspect-ratio:4 / 3;
+    }
+
+    .mobile-controls{
+        gap:8px;
+    }
+
+    .mobile-controls button{
+        width:54px;
+        height:43px;
+    }
+
+    .panel{
+        padding:16px 13px;
+    }
+
+    .car-icon{
+        font-size:2.2rem;
+    }
+
+    .panel h2{
+        font-size:1.45rem;
+    }
+
+    .panel p{
+        font-size:.74rem;
+        line-height:1.3;
+        margin-bottom:10px;
+    }
+
+    .panel button{
+        min-height:48px;
+        font-size:.72rem;
+    }
+}
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media screen and
+(orientation:landscape) and
+(max-height:600px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    .page{
+        width:100%;
+        padding:4px 8px 8px;
+    }
+
+    header{
+        padding:2px 0 5px;
+    }
+
+    /*
+       Hide the intro in landscape.
+       This gives the game maximum height.
+    */
+    .intro{
+        display:none;
+    }
+
+    .game-shell{
+        padding:5px;
+        border-radius:12px;
+    }
+
+    .hud{
+        margin-bottom:5px;
+    }
+
+    .hud div{
+        padding:4px 6px;
+    }
+
+    .hud small{
+        font-size:7px;
+    }
+
+    .hud strong{
+        font-size:10px;
+    }
+
+    /*
+       IMPORTANT:
+       Keep the complete game canvas visible.
+    */
+    #gameWrap{
+        width:100%;
+        height:min(
+            calc(100vh - 105px),
+            390px
+        );
+
+        aspect-ratio:auto;
+
+        min-height:190px;
+    }
+
+    #gameCanvas{
+        width:100%;
+        height:100%;
+    }
+
+    .overlay{
+        padding:6px;
+    }
+
+    .panel{
+        width:min(400px,90%);
+        max-height:92%;
+        padding:12px 16px;
+    }
+
+    .car-icon{
+        font-size:2rem;
+        margin-bottom:3px;
+    }
+
+    .panel .eyebrow{
+        font-size:7px;
+    }
+
+    .panel h2{
+        font-size:18px;
+        margin:4px 0 6px;
+    }
+
+    .panel p{
+        font-size:10px;
+        line-height:1.25;
+        margin-bottom:8px;
+    }
+
+    .panel button{
+        min-height:38px;
+        padding:7px 18px;
+        font-size:9px;
+    }
+
+    .mobile-controls{
+        padding:4px 0 0;
+        gap:8px;
+    }
+
+    .mobile-controls button{
+        width:44px;
+        height:31px;
+    }
+
+    .how{
+        display:none;
+    }
+}
+
+/* =========================================================
+   VERY SHORT LANDSCAPE PHONES
+========================================================= */
+
+@media screen and
+(orientation:landscape) and
+(max-height:420px){
+
+    .page{
+        padding:2px 6px 4px;
+    }
+
+    header{
+        padding:1px 0 3px;
+    }
+
+    .game-shell{
+        padding:4px;
+    }
+
+    .hud{
+        margin-bottom:3px;
+    }
+
+    .hud div{
+        padding:3px 5px;
+    }
+
+    .hud small{
+        font-size:6px;
+    }
+
+    .hud strong{
+        font-size:9px;
+    }
+
+    #gameWrap{
+        height:calc(100vh - 82px);
+        min-height:165px;
+    }
+
+    .overlay{
+        padding:4px;
+    }
+
+    .panel{
+        width:min(350px,88%);
+        padding:8px 12px;
+    }
+
+    .car-icon{
+        font-size:1.5rem;
+        margin-bottom:1px;
+    }
+
+    .panel .eyebrow{
+        font-size:6px;
+    }
+
+    .panel h2{
+        font-size:14px;
+        margin:2px 0 4px;
+    }
+
+    .panel p{
+        font-size:8px;
+        line-height:1.2;
+        margin-bottom:5px;
+    }
+
+    .panel button{
+        min-height:31px;
+        padding:5px 15px;
+        font-size:8px;
+    }
+
+    .mobile-controls{
+        padding-top:2px;
+    }
+
+    .mobile-controls button{
+        width:40px;
+        height:27px;
+        font-size:.75rem;
+    }
+}
