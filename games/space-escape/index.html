@@ -1,51 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-<title>Space Escape — GameZone</title>
+    <title>Space Escape — GameZone</title>
 
-<meta name="description"
-      content="Play Space Escape, a free arcade space game on GameZone. Dodge asteroids, collect energy and survive as long as possible.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@400;600;700&display=swap"
-      rel="stylesheet">
-
-<link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="game.css">
 </head>
 
 <body class="game-page">
 
 <div class="page">
 
-    <header>
+    <header class="topbar">
         <a class="brand" href="../../">GAMEZONE</a>
-        <a class="back-link" href="../../">← MORE GAMES</a>
+        <a class="back" href="../../">← MORE GAMES</a>
     </header>
 
     <main>
 
-        <!-- GAME HEADER -->
-        <section class="game-header">
+        <!-- GAME INTRO -->
+        <section class="intro">
 
             <div>
                 <div class="eyebrow">ACTION • SPACE</div>
 
                 <h1>
-                    SPACE <span>ESCAPE</span>
+                    SPACE<br>
+                    <span>ESCAPE</span>
                 </h1>
 
                 <p>
-                    Escape the asteroid field, collect energy and survive
-                    for as long as possible.
+                    Pilot your ship through a dangerous asteroid field.
+                    Dodge incoming rocks, manage your fuel and escape into deep space.
                 </p>
             </div>
 
-            <div class="game-best">
-                <span>BEST SCORE</span>
-                <strong id="bestScore">0</strong>
+            <div class="tips">
+
+                <b>DESKTOP</b>
+                <br>
+                ↑ ↓ / W S to fly
+
+                <br><br>
+
+                <b>MOBILE</b>
+                <br>
+                Drag the ship or use the controls
+
             </div>
 
         </section>
@@ -54,48 +66,51 @@
         <!-- GAME -->
         <section class="game-shell">
 
-            <div class="game-frame" id="gameFrame">
+            <!-- HUD -->
+            <div class="hud">
+
+                <div class="hud-box">
+                    <small>SCORE</small>
+                    <strong id="score">0</strong>
+                </div>
+
+                <div class="hud-box">
+                    <small>FUEL</small>
+                    <strong id="fuel">100%</strong>
+                </div>
+
+                <div class="hud-box">
+                    <small>LIVES</small>
+                    <strong id="lives">3</strong>
+                </div>
+
+                <div class="hud-box">
+                    <small>DISTANCE</small>
+                    <strong id="distance">0%</strong>
+                </div>
+
+                <button
+                    id="pauseBtn"
+                    class="pause-btn"
+                    type="button"
+                    aria-label="Pause game"
+                >
+                    Ⅱ
+                </button>
+
+            </div>
+
+
+            <!-- GAME AREA -->
+            <div id="gameWrap">
 
                 <canvas id="gameCanvas"></canvas>
 
 
-                <!-- HUD -->
-                <div class="hud">
-
-                    <div class="hud-box">
-                        <span>SCORE</span>
-                        <strong id="score">0</strong>
-                    </div>
-
-                    <div class="hud-box">
-                        <span>ENERGY</span>
-                        <strong id="energy">100%</strong>
-                    </div>
-
-                    <div class="hud-box">
-                        <span>LIVES</span>
-                        <strong id="lives">3</strong>
-                    </div>
-
-                    <div class="hud-box combo-box">
-                        <span>LEVEL</span>
-                        <strong id="level">1</strong>
-                    </div>
-
-                    <button
-                        id="pauseBtn"
-                        class="hud-btn"
-                        aria-label="Pause game">
-                        Ⅱ
-                    </button>
-
-                </div>
-
-
                 <!-- START SCREEN -->
-                <div id="startScreen" class="overlay">
+                <div id="startOverlay" class="overlay">
 
-                    <div class="overlay-card">
+                    <div class="panel">
 
                         <div class="big-icon">🚀</div>
 
@@ -103,25 +118,16 @@
                             GAMEZONE ORIGINAL
                         </div>
 
-                        <h2>
-                            SPACE ESCAPE
-                        </h2>
+                        <h2>SPACE ESCAPE</h2>
 
                         <p>
-                            Dodge incoming asteroids, collect energy
-                            crystals and survive the asteroid field.
+                            Escape the asteroid field, avoid collisions
+                            and reach deep space before your fuel runs out.
                         </p>
 
-                        <button
-                            id="startBtn"
-                            class="game-btn primary-game">
+                        <button id="startBtn" type="button">
                             START MISSION
                         </button>
-
-                        <div class="controls">
-                            <span><b>DESKTOP</b> ← → / A D</span>
-                            <span><b>MOBILE</b> Drag or use controls</span>
-                        </div>
 
                     </div>
 
@@ -129,20 +135,17 @@
 
 
                 <!-- PAUSE SCREEN -->
-                <div id="pauseScreen"
-                     class="overlay hidden">
+                <div id="pauseOverlay" class="overlay hidden">
 
-                    <div class="overlay-card small-card">
+                    <div class="panel compact">
 
                         <div class="eyebrow">
-                            MISSION PAUSED
+                            FLIGHT PAUSED
                         </div>
 
                         <h2>PAUSED</h2>
 
-                        <button
-                            id="resumeBtn"
-                            class="game-btn primary-game">
+                        <button id="resumeBtn" type="button">
                             RESUME
                         </button>
 
@@ -152,50 +155,33 @@
 
 
                 <!-- GAME OVER -->
-                <div id="gameOverScreen"
-                     class="overlay hidden">
+                <div id="gameOverOverlay" class="overlay hidden">
 
-                    <div class="overlay-card">
+                    <div class="panel">
+
+                        <div class="big-icon">🌌</div>
 
                         <div class="eyebrow">
-                            MISSION OVER
+                            MISSION RESULT
                         </div>
 
-                        <h2 id="gameOverTitle">
-                            GAME OVER
+                        <h2 id="overTitle">
+                            MISSION FAILED
                         </h2>
 
-                        <p id="gameOverText">
-                            Your spacecraft couldn't escape the asteroid field.
-                        </p>
+                        <p id="overText"></p>
 
-                        <div class="result-grid">
+                        <div class="result">
 
-                            <div>
-                                <span>SCORE</span>
-                                <strong id="finalScore">0</strong>
-                            </div>
+                            <span>FINAL SCORE</span>
 
-                            <div>
-                                <span>LEVEL</span>
-                                <strong id="finalLevel">1</strong>
-                            </div>
-
-                            <div>
-                                <span>BEST</span>
-                                <strong id="finalBest">0</strong>
-                            </div>
-
-                            <div>
-                                <span>ENERGY</span>
-                                <strong id="finalEnergy">0%</strong>
-                            </div>
+                            <b id="finalScore">
+                                0
+                            </b>
 
                         </div>
 
-                        <button
-                            id="restartBtn"
-                            class="game-btn primary-game">
+                        <button id="restartBtn" type="button">
                             PLAY AGAIN
                         </button>
 
@@ -210,21 +196,27 @@
             <div class="mobile-controls">
 
                 <button
-                    id="leftBtn"
-                    aria-label="Move left">
-                    ◀
+                    id="upBtn"
+                    type="button"
+                    aria-label="Move up"
+                >
+                    ▲
                 </button>
 
                 <button
                     id="mobilePauseBtn"
-                    aria-label="Pause game">
+                    type="button"
+                    aria-label="Pause game"
+                >
                     Ⅱ
                 </button>
 
                 <button
-                    id="rightBtn"
-                    aria-label="Move right">
-                    ▶
+                    id="downBtn"
+                    type="button"
+                    aria-label="Move down"
+                >
+                    ▼
                 </button>
 
             </div>
@@ -233,41 +225,31 @@
 
 
         <!-- HOW TO PLAY -->
-        <section class="how-to">
+        <section class="how">
 
-            <h2>How to Play</h2>
+            <article>
+                <b>1</b>
+                <h3>FLY</h3>
+                <p>
+                    Move your spacecraft up and down to avoid asteroids.
+                </p>
+            </article>
 
-            <div class="how-grid">
+            <article>
+                <b>2</b>
+                <h3>DODGE</h3>
+                <p>
+                    Stay alert and avoid incoming asteroid collisions.
+                </p>
+            </article>
 
-                <div>
-                    <b>1</b>
-                    <span>
-                        Move your spacecraft left and right.
-                    </span>
-                </div>
-
-                <div>
-                    <b>2</b>
-                    <span>
-                        Dodge the incoming asteroids.
-                    </span>
-                </div>
-
-                <div>
-                    <b>3</b>
-                    <span>
-                        Collect energy crystals to keep flying.
-                    </span>
-                </div>
-
-                <div>
-                    <b>4</b>
-                    <span>
-                        Survive longer to reach higher levels.
-                    </span>
-                </div>
-
-            </div>
+            <article>
+                <b>3</b>
+                <h3>ESCAPE</h3>
+                <p>
+                    Reach 100% distance before your fuel runs out.
+                </p>
+            </article>
 
         </section>
 
